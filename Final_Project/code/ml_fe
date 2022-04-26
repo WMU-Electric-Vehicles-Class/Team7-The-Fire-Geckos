@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Apr 22 15:44:44 2022
+
+@author: parth
+"""
+
+
+import pandas as pd 
+import numpy as np
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+import sklearn
+
+
+fe = pd.read_csv('/home/parth/Desktop/f1_specs_ml.csv')
+
+sns.pairplot(fe)
+
+sns.heatmap(fe.corr(), annot=True)
+
+X = fe[['Gen_Veh ', 'Peak_Power (kW)', 'Battery_Size (kWh)', 'Zero_to_Sixty (secs)', 'Regen (kWh)']]
+y = fe['Lap_Times_Fast (mins)']
+
+X1 = fe[['Gen_Veh ', 'Peak_Power (kW)', 'Battery_Size (kWh)', 'Lap_Times_Fast (mins)', 'Regen (kWh)']]
+y1 = fe['Zero_to_Sixty (secs)']
+
+X_train = X[:3].astype('float32')
+y_train = y[:3].astype('float32')
+X_test = X[3:5].astype('float32')
+y_test = y[3:5].astype('float32')
+
+X1_train = X1[:3].astype('float32')
+y1_train = y1[:3].astype('float32')
+X1_test = X1[3:5].astype('float32')
+y1_test = y1[3:5].astype('float32')
+
+
+#X_train = np.nan_to_num(X_train)
+#X_test = np.nan_to_num(X_test)
+#y_train = np.nan_to_num(y_test)
+#y_test = np.nan_to_num(y_test)
+
+from sklearn.linear_model import LinearRegression
+
+lm = LinearRegression()
+lm.fit(X_train,y_train)
+
+coeff_df = pd.DataFrame(lm.coef_,X.columns,columns=['Coefficient'])
+coeff_df
+predictions = lm.predict(X_test)
+
+#predictions
+#plt.scatter(y_test,predictions)
+#plt.show()
+
+#fig, ax = plt.subplots(figsize=(15,5))
+#ax.scatter(fe['Gen_Veh '],fe['Lap_Times_Fast (mins)'],label='Real World Data ', s=50*2, c ='r')
+##ax.scatter(X_train['Gen_Veh '],y_train, s =50*2, c = 'g')
+#ax.scatter(X_test['Gen_Veh '], predictions, label='Prediction', s = 50*2, c = 'g')
+#plt.legend(loc='upper right')
+#plt.xlabel('Vehicle Generation')
+#plt.ylabel('Race Lap time (mins)')
+#plt.grid(True)
+
+lm1 = LinearRegression()
+lm1.fit(X1_train,y1_train)
+
+coeff_df = pd.DataFrame(lm1.coef_,X1.columns,columns=['Coefficient'])
+coeff_df
+predictions1 = lm1.predict(X1_test)
+
+predictions1
+
+fig, ax = plt.subplots(figsize=(15,5))
+ax.scatter(X1_test['Gen_Veh '],y1_test, s =50*2, label='Real Data', c = 'g')
+ax.scatter(X1_test['Gen_Veh '], predictions1, label='Prediction', s = 50*2, c = 'r')
+plt.legend(loc='upper right')
+plt.xlabel('Vehicle Generation')
+plt.ylabel('0 - 60 (mphs in secs)')
+plt.grid(True)
+

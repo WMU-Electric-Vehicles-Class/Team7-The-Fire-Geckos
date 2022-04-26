@@ -1,0 +1,6 @@
+Gen_Veh ,Lap_Times_Fast (mins),Peak_Power (kW),Battery_Size (kWh),Zero_to_Sixty (secs),Regen (kWh)
+1,50,200,28,3,150
+2,48,250,54,2.8,250
+3,46,350,75,2.2,600
+4,45,400,80,2.0,650 
+5,43,450,88,1.9,660

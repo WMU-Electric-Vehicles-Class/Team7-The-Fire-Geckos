@@ -1,6 +1,12 @@
 This is the ReadMe.md file for Team 7 - The Fire Geckos
 
-# Project Halfway Report Update 
+# Project - Final Report Update 
+
+## For the final project, we have included all the vehicle subsytems. The battery, transmission (from the F-SAE vehicle), motor, and power electronics. The efficeincy motor maps were obtained from the Audi ETron as information for the Speed, Torque and Efficiency was available online.    
+
+### The main challenges faced were getting data for our specific vehicle, there were a lot of guess-timates made in order to model the vehicle. 
+
+# Project - Halfway Report Update 
 
 ## The code for the halfway project can be found in the Project_half folder, this contains the code that we used to obtain the necessary plots for the component modelling section. Our project contains modelling and analysis of a Formula E vehicle.  
 
@@ -8,4 +14,6 @@ This is the ReadMe.md file for Team 7 - The Fire Geckos
 
 ## It is difficult to find specific details and component specifications for this vehicle so we decided to use vehicles that are either similar to the Formula E or simulated, the vehicle based on values found through websites and papers. 
 
-## For the final project, we have included all the vehicle subsytems. The battery, transmission (from the F-SAE vehicle), motor, and power electronics. The efficeincy motor maps were obtained from the Audi ETron as information for the Speed, Torque and Efficiency was available online.    
+
+
+
